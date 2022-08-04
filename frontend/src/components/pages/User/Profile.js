@@ -11,6 +11,7 @@ import useFlashMessage from '../../../hooks/useFlashMessage'
 function Profile(){
 
     const [user, setUser] = useState({})
+    const [preview, setpreview] = useState('')
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage()
 
@@ -25,7 +26,8 @@ function Profile(){
     }, [token])
 
     function onFileChange(e){
-        
+
+        setpreview(e.target.files[0])
         setUser({ ...user, [e.target.name]: e.target.files[0]})
 
     }
@@ -42,9 +44,7 @@ function Profile(){
 
         const formData = new FormData()
 
-       await Object.keys(user).forEach((key) => {
-            formData.append(key, user[key])
-        }) 
+        await Object.keys(user).forEach((key) => formData.append(key, user[key])) 
 
         const data  = await api.patch(`/users/edit/${user._id}`, formData, {
             headers: {
@@ -68,7 +68,16 @@ function Profile(){
 
             <div className={styles.profile_header}>
                 <h1>Perfil</h1>
-                <p>Preview Imagem</p>
+                {(user.image || preview) && (
+                    <img 
+                        src={
+                            preview 
+                                ? URL.createObjectURL(preview) 
+                                : `${process.env.REACT_APP_API}/images/users/${user.image}`
+                        } 
+                        alt={user.name}
+                    />
+                )}
             </div>
 
             <form onSubmit={handleSubmit} className={formStyles.form_container}>
