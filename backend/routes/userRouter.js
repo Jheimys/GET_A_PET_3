@@ -3,7 +3,7 @@ const UserController = require('../controllers/UserController')
 
 //middleware
 const verifyToken = require('../helpers/verify-token')
-const { imageUpload } = require('../helpers/imeage-upload')
+const { imageUpload } = require('../helpers/image-upload')
 
 router.get('/checkuser', UserController.checkUser)
 router.get('/:id', UserController.getUserById)
