@@ -12,6 +12,8 @@ import Register from './components/pages/Auth/Register'
 import Home from './components/pages/Home'
 import Profile from'./components/pages/User/Profile'
 import MyPets from './components/pages/pets/MyPets'
+import AddPet from './components/pages/pets/AddPet'
+
 
 
 /* Context */
@@ -35,6 +37,8 @@ function App() {
             <Route path="/user/profile" element={<Profile /> } />
 
             <Route path="/pet/mypets" element={<MyPets /> } />
+
+            <Route path="/pet/add" element={<AddPet /> } />
                     
             <Route path='/' exact element={<Home />} />
 
