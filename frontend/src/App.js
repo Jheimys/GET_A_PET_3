@@ -13,6 +13,7 @@ import Home from './components/pages/Home'
 import Profile from'./components/pages/User/Profile'
 import MyPets from './components/pages/pets/MyPets'
 import AddPet from './components/pages/pets/AddPet'
+import EditPet from './components/pages/pets/EditPet'
 
 
 
@@ -39,6 +40,8 @@ function App() {
             <Route path="/pet/mypets" element={<MyPets /> } />
 
             <Route path="/pet/add" element={<AddPet /> } />
+
+            <Route path="/pet/edit/:id" element={<EditPet /> } />
                     
             <Route path='/' exact element={<Home />} />
 
