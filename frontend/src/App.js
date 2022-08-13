@@ -14,11 +14,13 @@ import Profile from'./components/pages/User/Profile'
 import MyPets from './components/pages/pets/MyPets'
 import AddPet from './components/pages/pets/AddPet'
 import EditPet from './components/pages/pets/EditPet'
+import PetDetails from './components/pages/pets/PetDetails'
 
 
 
 /* Context */
 import { UserProvider } from './context/UserContext'
+
 
 function App() {
   return (
@@ -40,9 +42,11 @@ function App() {
             <Route path="/pet/mypets" element={<MyPets /> } />
 
             <Route path="/pet/add" element={<AddPet /> } />
-
+            
             <Route path="/pet/edit/:id" element={<EditPet /> } />
-                    
+
+            <Route path="/pets/:id" element={<PetDetails /> } />
+        
             <Route path='/' exact element={<Home />} />
 
           </Routes>
