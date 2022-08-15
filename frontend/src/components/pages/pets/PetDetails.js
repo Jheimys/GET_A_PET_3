@@ -27,15 +27,15 @@ function PetDetails() {
 
         <>
             {pet.name && (
-                <section>
-                    <div>
+                <section className={styles.pet_details_container}>
+                    <div className={styles.pet_details_header}>
                         <h1>
                             conhecendo o Pet: {pet.name}
                         </h1>
                         <p>Se tiver interesse marque uma visita para conhecê-lo</p>
                     </div>
 
-                    <div>
+                    <div className={styles.pet_images}>
                         {pet.images.map((image, index) => (
                             <img
                                 src={`${process.env.REACT_APP_API}/images/pets/${image}`}
@@ -46,7 +46,7 @@ function PetDetails() {
                     </div>
 
                     <p>
-                        <span className='bold'>Peso:</span> {pet.weigth}kg
+                        <span className='bold'>Peso:</span> {pet.weight}kg
                     </p>
 
                     <p>
