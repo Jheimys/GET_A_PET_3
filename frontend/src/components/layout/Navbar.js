@@ -31,6 +31,11 @@ function Navbar(){
                 
                 {authenticadet ? (  
                     <> 
+
+                        <li> 
+                            <Link to='/pets/myadoptions'>Minhas adoções</Link>
+                        </li>
+
                         <li> 
                             <Link to='/pet/mypets'>Meus Pets</Link>
                         </li>

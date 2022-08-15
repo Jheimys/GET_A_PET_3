@@ -15,7 +15,7 @@ import MyPets from './components/pages/pets/MyPets'
 import AddPet from './components/pages/pets/AddPet'
 import EditPet from './components/pages/pets/EditPet'
 import PetDetails from './components/pages/pets/PetDetails'
-
+import MyAdoptions from './components/pages/pets/MyAdoptions'
 
 
 /* Context */
@@ -44,6 +44,8 @@ function App() {
             <Route path="/pet/add" element={<AddPet /> } />
             
             <Route path="/pet/edit/:id" element={<EditPet /> } />
+
+            <Route path="/pets/myadoptions" element={<MyAdoptions /> } />
 
             <Route path="/pets/:id" element={<PetDetails /> } />
         
