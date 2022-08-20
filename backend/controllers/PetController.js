@@ -290,6 +290,8 @@ module.exports = class Petcontroller {
         const token = getToken(req)
         const user = await getUserByToken(token)
 
+        console.log(pet.user._id)
+
         if(pet.user._id.equals(user._id)) {
             res.status(422).json({
                 message: 'Você não pode agendar uma visita para o seu próprio pet!'

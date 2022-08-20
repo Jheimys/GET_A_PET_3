@@ -5,6 +5,7 @@ const UserController = require('../controllers/UserController')
 const verifyToken = require('../helpers/verify-token')
 const { imageUpload } = require('../helpers/image-upload')
 
+//Rotas
 router.get('/checkuser', UserController.checkUser)
 router.get('/:id', UserController.getUserById)
 

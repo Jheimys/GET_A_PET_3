@@ -8,7 +8,7 @@ const getToken = require('../helpers/get-token')
 const getUserByToken = require('../helpers/get-user-by-token')
 
 module.exports = class UserController {
-    static async register(req, res){
+    static async register(req, res){ 
         const {name, email, phone, password, confirmpassword} = req.body
 
         if(!name){
@@ -256,6 +256,8 @@ module.exports = class UserController {
         const token = getToken(req)
         const user = await getUserByToken(token)
 
+       // console.log('user:',user)
+
 
         const{ name, email, phone, password, confirmpassword } = req.body
 
@@ -278,10 +280,12 @@ module.exports = class UserController {
             return
         }
 
+
         const userExists = await User.findOne({email: email})
 
-        //console.log('email:', userExists)
-        //console.log('Email do usuário:', user.email)
+        //console.log('UserExists:', userExists) //verifica os emails no BD
+        //console.log('User.email:', user.email) // email do usuário do token
+        //console.log('email:', email) // email digitado.
 
         if(user.email !== email && userExists) {
             res.status(422).json({ message: 'Por favor, utilize outro email!'})
@@ -297,7 +301,15 @@ module.exports = class UserController {
 
         user.phone = phone
 
+        if(!password){
+            res.status(422).json({message: 'A senha é obrigatório'})
+            return
+        }
 
+        if(!confirmpassword){
+            res.status(422).json({message: 'A confirmação de senha é obrigatório'})
+            return
+        }
 
         if(password != confirmpassword) {
             res.status(422).json({ message: 'As senhas não conferem!'})
@@ -314,9 +326,9 @@ module.exports = class UserController {
         try {
             
             await User.findOneAndUpdate(
-                {_id: user._id},
-                {$set: user},
-                { new: true },
+                {_id: user._id}, // Atualizando pelo id.
+                {$set: user},// o que vai ser atualizado
+                { new: true },//Parametro para fazer a atualização
             )
 
             res.status(200).json({
