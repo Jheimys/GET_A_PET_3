@@ -11,11 +11,9 @@ module.exports = class Petcontroller {
     static async create(req, res) {
         const { name, age, weight, color } = req.body
 
-        const images = req.files               // As imagens vem por files e não pelo body.
+        const images = req.files         // As imagens vem por files e não pelo body.
 
         const available = true
-
-        //images upload
 
         //validations
         if(!name) {
